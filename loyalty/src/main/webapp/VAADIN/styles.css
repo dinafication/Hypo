@@ -1,0 +1,6 @@
+@import url(../base/styles.css);
+
+.v-button .v-icon {
+    margin-left: -0.5em;
+     margin-right: -0.5em;
+}
