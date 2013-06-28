@@ -2,6 +2,8 @@ package hr.in2.invest.loyalty.loyalty.components;
 
 
 import com.vaadin.addon.touchkit.ui.TabBarView;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.TabSheet.Tab;
 
 public class Tabs extends TabBarView{
 	
@@ -27,7 +29,7 @@ public class Tabs extends TabBarView{
 	public void selectHome(){
 		setSelectedTab(mng);
 	}
-	
+
 	public PersonalTab getPersonalTab(){
 		return pt;
 	}

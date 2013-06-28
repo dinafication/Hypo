@@ -5,16 +5,28 @@ import hr.in2.invest.loyalty.loyalty.ChoicePanel;
 import hr.in2.invest.loyalty.loyalty.dummydata.DummAcc;
 
 import com.vaadin.addon.touchkit.ui.NavigationManager;
+import com.vaadin.addon.touchkit.ui.NavigationView;
 
 public class Manager extends NavigationManager{
 	
 	private static final long serialVersionUID = 1L;
 
 	 public Manager() {
-			navigateTo(new ChoicePanel(this));
-		 //showChoicePanel();
+		 showChoicePanel();
+		 
 		}
+	 
+	
 
+	 @Override
+	public void attach() {
+		 //showChoicePanel();
+//		 /
+		 
+		super.attach();	
+		navigateTo(new ChoicePanel(this));
+	}
+	 
 		
 		public void showMaster() {
 			// first go back to top level
@@ -55,7 +67,33 @@ public class Manager extends NavigationManager{
 //			}
 			
 		}
+
+
+
+		public void showCode() {
+			while (getPreviousComponent() != null) {
+				navigateBack();
+			}
+			navigateTo(new MyCode());
+			
+		}
 		
+		
+		public void showSend() {
+			while (getPreviousComponent() != null) {
+				navigateBack();
+			}
+			navigateTo(new MySend());
+			
+		}
+		
+		public void showPoints() {
+			while (getPreviousComponent() != null) {
+				navigateBack();
+			}
+			navigateTo(new MyPoints());
+			
+		}
 		
 
 	
@@ -67,5 +105,6 @@ public class Manager extends NavigationManager{
 //		// then navigate to species via its group
 //		//navigateTo(new WaitingTab());
 //	}
-
+	
+		
 }

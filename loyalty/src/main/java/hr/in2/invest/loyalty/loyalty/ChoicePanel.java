@@ -4,7 +4,7 @@ import hr.in2.invest.loyalty.loyalty.components.Detail;
 import hr.in2.invest.loyalty.loyalty.components.ItemNavigationButton;
 import hr.in2.invest.loyalty.loyalty.components.Manager;
 import hr.in2.invest.loyalty.loyalty.components.Master;
-import hr.in2.invest.loyalty.loyalty.components.MyData;
+import hr.in2.invest.loyalty.loyalty.components.MyPoints;
 import hr.in2.invest.loyalty.loyalty.components.Tabs;
 import hr.in2.invest.loyalty.loyalty.dummydata.DummAcc;
 
@@ -13,6 +13,7 @@ import com.vaadin.addon.touchkit.ui.NavigationView;
 import com.vaadin.addon.touchkit.ui.VerticalComponentGroup;
 import com.vaadin.event.LayoutEvents;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.terminal.Resource;
 import com.vaadin.terminal.ThemeResource;
@@ -47,33 +48,31 @@ public class ChoicePanel extends NavigationView{
     	
     	VerticalComponentGroup componentGroup00 = new VerticalComponentGroup();
     	
-    	final ItemNavigationButton pom = new ItemNavigationButton(new Master(mng), null);
+    	final Button pom = new ItemNavigationButton(new Master((Manager) getNavigationManager()), "Home");
 
 		pom.setWidth("90px");
 		pom.setHeight("90px");
-		ThemeResource t = new ThemeResource("img/Piggy-Bank-hot-128.png");
 		pom.setIcon(new ThemeResource("img/Piggy-Bank-hot-128.png"));
-		componentGroup00.addComponent(pom);  	
-    	
-//    	
-//    	componentGroup00.addListener(new LayoutEvents.LayoutClickListener() {
-//			
-//			private static final long serialVersionUID = 1L;
-//
-//			@Override
-//			public void layoutClick(LayoutClickEvent event) {
-//				//((ClickListener)pom.getListeners(Button.ClickListener.class).iterator().next()).buttonClick(pom.new ClickEvent(pom));
-//				//mng.showMaster();
-//				pom.buttonClick(pom.new ClickEvent(pom));
-//				
-//			}
-//		});
+		pom.setStyleName("nobackground"); // ?
+		//componentGroup00.addComponent(pom);  
+		
+    	componentGroup00.addListener(new LayoutEvents.LayoutClickListener() {
+			
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				//getNavigationManager().navigateTo(new Master(mng));
+				((Manager)getNavigationManager()).showMaster();
+				
+			}
+		});
     	componentGroup00.setCaption("Account");
     	
     	Embedded eLogo00 = new Embedded();
     	eLogo00.setWidth("95px");
     	eLogo00.setSource(new ThemeResource("img/Piggy-Bank-hot-128.png"));	
-    	//componentGroup00.addComponent(eLogo00);
+    	componentGroup00.addComponent(eLogo00);
     	content.addComponent(componentGroup00);
 		
 		
@@ -85,7 +84,7 @@ public class ChoicePanel extends NavigationView{
 
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
-				getApplication().getMainWindow().setContent(new MyData());
+				getApplication().getMainWindow().setContent(new MyPoints());
 			}
 		});
     	componentGroup01.setCaption("My Points");
@@ -100,6 +99,17 @@ public class ChoicePanel extends NavigationView{
 
 		VerticalComponentGroup componentGroup10 = new VerticalComponentGroup();
     	componentGroup10.setCaption("Send");
+    	componentGroup10.addListener(new LayoutEvents.LayoutClickListener() {
+			
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				//getNavigationManager().navigateTo(new Master(mng));
+				((Manager)getNavigationManager()).showSend();
+				
+			}
+		});
     	
     	Embedded eLogo10 = new Embedded();
     	eLogo10.setWidth("95px");
@@ -111,6 +121,17 @@ public class ChoicePanel extends NavigationView{
 		
 		VerticalComponentGroup componentGroup11 = new VerticalComponentGroup();
     	componentGroup11.setCaption("My data");
+    	componentGroup11.addListener(new LayoutEvents.LayoutClickListener() {
+			
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				//getNavigationManager().navigateTo(new Master(mng));
+				((Manager)getNavigationManager()).showCode();
+				
+			}
+		});
     	
     	Embedded eLogo11 = new Embedded();
     	eLogo11.setWidth("95px");

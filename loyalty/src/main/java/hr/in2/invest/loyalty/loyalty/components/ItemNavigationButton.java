@@ -10,6 +10,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 public class ItemNavigationButton extends NavigationButton implements ClickListener{
+	
 	private static final long serialVersionUID = 1L;
 	private NavigationView nv;
 
@@ -25,9 +26,5 @@ public class ItemNavigationButton extends NavigationButton implements ClickListe
 		
 	}
 	
-	
-	
-		
-		
 	
 }

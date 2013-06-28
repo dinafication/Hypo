@@ -31,6 +31,9 @@ public class MyVaadinApplication extends TouchKitApplication
 //            }
 //        });
         //getMainWindow().addComponent(button);
+    	
+    	
+    	
         tabs = new Tabs();
         mainWindow.setContent(tabs);
     }
@@ -38,6 +41,8 @@ public class MyVaadinApplication extends TouchKitApplication
 	@Override
 	public void init() {
 		super.init();
+		
+		setTheme("hyp");
 
 		mainWindow = new TouchKitWindow();
 		setMainWindow(mainWindow);
